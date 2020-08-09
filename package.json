@@ -1,0 +1,31 @@
+{
+  "name": "team-profile-gen",
+  "version": "1.0.0",
+  "description": "A Team Profile Generator",
+  "main": "Index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "jest": "^26.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leo-ayala/Team-Profile-Gen.git"
+  },
+  "keywords": [
+    "Generator",
+    "Team-Profile"
+  ],
+  "author": "Leo Ayala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leo-ayala/Team-Profile-Gen/issues"
+  },
+  "homepage": "https://github.com/leo-ayala/Team-Profile-Gen#readme"
+}
