@@ -3,9 +3,10 @@ const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 const inquirer = require("inquirer")
 const generatePage = require('./src/page-template')
+const fs = require('fs')
 
 
-var employees = []
+var employees = [];
 
 function firstMessage() {
     console.log('Please enter infromation about yourself')
@@ -96,6 +97,7 @@ function teamMembers() {
             makeEngineer().then(answers => {
                 let engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
                 employees.push(engineer)
+                console.log(employees)
                 teamMembers()
             })
         } else if (choice.type == 'Intern') {
@@ -105,15 +107,16 @@ function teamMembers() {
                 teamMembers()
             })
         } else {
-            makePage()
+            makePage(employees)
         }
     })
 }
 
 function makePage(employees) {
-    const pageHTML = new generatePage(employees);
-            
-    fs.writeFile('./dist/index.html', pageHTML, err => {
+    const newHTML = new generatePage(employees);
+    console.log(employees)
+        newHTML.makePage()
+    fs.writeFile('./dist/index.html', newHTML.getPage(), err => {
         if (err) {
         console.log(err);
         return;
@@ -126,6 +129,7 @@ firstMessage()
     .then(answers => {
         let manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
         employees.push(manager);
+        console.log(employees)
     })
     .then(() => {
          teamMembers()
