@@ -10,7 +10,8 @@
 
 ## Video
 
-(link)
+<[Video] href = "./Screen Recording 2020-08-09 .mov">
+(screen recording is on the root of GitHub)
 
 ## Usage
 
