@@ -1,10 +1,9 @@
-// const Questions = require('./lib/Questions')
-// new Questions().generate();
-const Employee = require('./lib/Employee')
 const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 const inquirer = require("inquirer")
+const generatePage = require('./src/page-template')
+
 
 var employees = []
 
@@ -106,9 +105,21 @@ function teamMembers() {
                 teamMembers()
             })
         } else {
-
+            makePage()
         }
     })
+}
+
+function makePage(employees) {
+    const pageHTML = new generatePage(employees);
+            
+    fs.writeFile('./dist/index.html', pageHTML, err => {
+        if (err) {
+        console.log(err);
+        return;
+    }
+        console.log('Page created! Check out index.html in this directory to see it!');
+    });
 }
 
 firstMessage()
@@ -120,4 +131,3 @@ firstMessage()
          teamMembers()
     });
 
-module.exports = employees
